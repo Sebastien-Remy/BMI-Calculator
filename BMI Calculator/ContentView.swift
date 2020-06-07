@@ -31,8 +31,6 @@ struct ContentView: View {
         let bmi = mass / (height * height)
         let formatedImc = String(format: "%.1f",bmi)
         
-        print(mass, height, bmi)
-        
         var category = ""
         switch bmi {
         case ...15:
@@ -64,18 +62,19 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
-         
                 Section  (header: Text("Data")) {
-                    TextField("Mass in kilograms", text: $massEntry)
                     TextField("Height in meters", text: $heightEntry)
+                    TextField("Mass in kilograms", text: $massEntry)
                     
                 }
                 .keyboardType(.decimalPad)
+                
                 Section (header: Text("Result")) {
                     Text("\(result.0)")
                         .bold()
                         .foregroundColor(result.1 ? .black : .red)
                 }
+                
             }
             .navigationBarTitle("BMI Calculator")
         }
